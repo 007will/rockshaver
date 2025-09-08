@@ -1,19 +1,26 @@
+import PreRegPage from '../support/pages/pre-reg.page'
+
 describe('Pré-Cadastro', () => {
   it('Deve logar o pré-cadastro com sucesso', () => {
-    cy.visit('/')
+    PreRegPage.go()
+    PreRegPage.fullForm()
+    PreRegPage.submit()
 
-    cy.get('header nav a[href=pre-cadastro]')
-      .click()
-
-    cy.get('form h2').should('be.visible').and('have.text', 'Seus dados')
-
-    cy.get('input[name="nome"]').type('Fernando papito')
-
-    cy.get('input[name="email"]').type('fernando@msn.com')   
-
-    cy.contains('button[type=submit]', 'Continuar').click()
-    
     cy.get('.user-name').should('be.visible').and('have.text', 'Fernando papito')
     cy.get('.user-email').should('be.visible').and('have.text', 'fernando@msn.com')
+
+  })
+
+  it('Campos obrigatórios', () => {
+  })
+
+  it('Não deve fazer o pré-cadastro apenas com o primeiro nome', () => {
+  })
+
+  it('Não deve fazer o pré-cadastro com um email incorreto', () => {
   })
 })
+
+
+
+
